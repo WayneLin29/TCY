@@ -1,0 +1,1 @@
+"C:\Program Files\Acumatica ERP\TCY\App_Data\Projects\LUMTCYCustomization\LUMTCYCustomization.sln"
