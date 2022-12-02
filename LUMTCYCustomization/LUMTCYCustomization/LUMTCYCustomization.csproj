@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Examples.cs" />
     <Compile Include="Graph_Extension\JournalEntryExtension.cs" />
+    <Compile Include="Graph_Extension\SOCreatShipmentExtension.cs" />
     <Compile Include="Graph_Extension\SOShipmentEntryExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

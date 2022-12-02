@@ -1,0 +1,201 @@
+﻿<Actions ScreenID="SO301000">
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="ShowInvoicesAndMemosGI" ActionType="P" After="processExpiredOrder" PlacementInCategory="0" DestinationScreenID="SO3031SP" DisplayName="Invoices and Memos" BatchMode="False" WindowMode="L" HideCondition="c0f1e30d-8136-a5d3-98ee-dea28e45cae4" MapEnableRights="1" ExposedToMobile="False">
+        <Param IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" Value="[orderType]" ActionName="ShowInvoicesAndMemosGI" Name="OrderType" FromSchema="False" />
+        <Param IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" Value="[orderNbr]" ActionName="ShowInvoicesAndMemosGI" Name="OrderNbr" FromSchema="False" />
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="ShowCustomerDetails" ActionType="P" After="ShowInvoicesAndMemosGI" PlacementInCategory="0" DestinationScreenID="AR402000" DisplayName="Customer Details" BatchMode="False" WindowMode="L" HideCondition="f4308ecb-8064-017a-13d8-bf7fe1f3f6bb" MapEnableRights="1" ExposedToMobile="False">
+        <Param IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" Value="[customerID]" ActionName="ShowCustomerDetails" Name="customerID" FromSchema="False" />
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="releaseFromHold" ActionType="G" After="Last" PlacementInCategory="0" BatchMode="False" MenuFolderType="Processing Category" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields>
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Hold" ActionName="releaseFromHold" IsFromScheme="True" Value="False" StateActionFieldLineNbr="0" />
+        </StateActionFields>
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="putOnHold" ActionType="G" After="createShipmentIssue" PlacementInCategory="0" AfterInMenu="releaseFromHold" BatchMode="False" MenuFolderType="Processing Category" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields>
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Cancelled" ActionName="putOnHold" IsFromScheme="True" Value="False" StateActionFieldLineNbr="0" />
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Hold" ActionName="putOnHold" IsFromScheme="True" Value="True" StateActionFieldLineNbr="1" />
+        </StateActionFields>
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="initializeState" ActionType="G" After="putOnHold" PlacementInCategory="0" BatchMode="False" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="quickProcess" ActionType="G" After="initializeState" PlacementInCategory="0" BatchMode="False" MenuFolderType="Processing Category" WindowMode="S" HideCondition="0b64ef6f-8ecb-8cb9-8c55-0a614c4ad011" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="True" IsCustomizedRecursive="False" ActionName="createShipmentReceipt" ActionType="G" After="quickProcess" PlacementInCategory="0" MassProcessingScreen="SO501000" BatchMode="False" MenuFolderType="Processing Category" WindowMode="S" ExposedToMobile="False">
+        <OriginalState IsActive="True" IsSystem="True" IsCustomized="False" ActionName="createShipmentReceipt" ActionType="G" After="quickProcess" PlacementInCategory="0" BatchMode="False" MenuFolderType="Processing Category" WindowMode="S" ExposedToMobile="False" />
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="createShipmentIssue" ActionType="G" After="createShipmentReceipt" PlacementInCategory="0" MassProcessingScreen="SO501000" BatchMode="True" MenuFolderType="Processing Category" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="prepareInvoice" ActionType="G" After="createShipmentIssue" PlacementInCategory="0" MassProcessingScreen="SO501000" BatchMode="True" MenuFolderType="Processing Category" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="placeOnBackOrder" ActionType="G" After="prepareInvoice" PlacementInCategory="0" BatchMode="False" MenuFolderType="Processing Category" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="openOrder" ActionType="G" After="placeOnBackOrder" PlacementInCategory="0" MassProcessingScreen="SO501000" BatchMode="False" MenuFolderType="Processing Category" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="completeOrder" ActionType="G" After="openOrder" PlacementInCategory="0" DisableCondition="95abe8b2-a2bf-8821-700c-b931a9355694" BatchMode="False" MenuFolderType="Processing Category" WindowMode="S" DisablePersist="False" ExposedToMobile="False">
+        <StateActionFields>
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="ForceCompleteOrder" ActionName="completeOrder" IsFromScheme="True" Value="True" StateActionFieldLineNbr="0" />
+        </StateActionFields>
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="cancelOrder" ActionType="G" After="completeOrder" PlacementInCategory="0" MassProcessingScreen="SO501000" BatchMode="False" MenuFolderType="Processing Category" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields>
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Cancelled" ActionName="cancelOrder" IsFromScheme="True" Value="True" StateActionFieldLineNbr="0" />
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Hold" ActionName="cancelOrder" IsFromScheme="True" Value="False" StateActionFieldLineNbr="1" />
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="CreditHold" ActionName="cancelOrder" IsFromScheme="True" Value="False" StateActionFieldLineNbr="2" />
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="InclCustOpenOrders" ActionName="cancelOrder" IsFromScheme="True" Value="False" StateActionFieldLineNbr="3" />
+        </StateActionFields>
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="reopenOrder" ActionType="G" After="cancelOrder" PlacementInCategory="0" BatchMode="False" MenuFolderType="Processing Category" WindowMode="S" DisablePersist="True" ExposedToMobile="False">
+        <StateActionFields>
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Cancelled" ActionName="reopenOrder" IsFromScheme="True" Value="False" StateActionFieldLineNbr="0" />
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Completed" ActionName="reopenOrder" IsFromScheme="True" Value="False" StateActionFieldLineNbr="1" />
+        </StateActionFields>
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="releaseFromCreditHold" ActionType="G" After="reopenOrder" PlacementInCategory="0" MassProcessingScreen="SO501000" BatchMode="False" MenuFolderType="Approval Category" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields>
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="ApprovedCredit" ActionName="releaseFromCreditHold" IsFromScheme="True" Value="True" StateActionFieldLineNbr="0" />
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="ApprovedCreditByPayment" ActionName="releaseFromCreditHold" IsFromScheme="True" Value="False" StateActionFieldLineNbr="1" />
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="ApprovedCreditAmt" ActionName="releaseFromCreditHold" IsFromScheme="False" Value="[orderTotal]" StateActionFieldLineNbr="2" />
+        </StateActionFields>
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="printSalesOrder" ActionType="G" After="releaseFromCreditHold" PlacementInCategory="0" MassProcessingScreen="SO502000" BatchMode="True" MenuFolderType="Printing and Emailing Category" WindowMode="S" DisablePersist="False" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="printQuote" ActionType="G" After="printSalesOrder" PlacementInCategory="0" MassProcessingScreen="SO502000" BatchMode="True" MenuFolderType="Printing and Emailing Category" WindowMode="S" DisablePersist="False" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="printBlanket" ActionType="G" After="printQuote" PlacementInCategory="0" MassProcessingScreen="SO502000" BatchMode="True" MenuFolderType="Printing and Emailing Category" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="emailSalesOrder" ActionType="G" After="printBlanket" PlacementInCategory="0" MassProcessingScreen="SO502000" BatchMode="True" MenuFolderType="Printing and Emailing Category" WindowMode="S" DisablePersist="False" ExposedToMobile="False">
+        <StateActionFields>
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Emailed" ActionName="emailSalesOrder" IsFromScheme="True" Value="True" StateActionFieldLineNbr="0" />
+        </StateActionFields>
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="emailQuote" ActionType="G" After="emailSalesOrder" PlacementInCategory="0" MassProcessingScreen="SO502000" BatchMode="True" MenuFolderType="Printing and Emailing Category" WindowMode="S" DisablePersist="False" ExposedToMobile="False">
+        <StateActionFields>
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Emailed" ActionName="emailQuote" IsFromScheme="True" Value="True" StateActionFieldLineNbr="0" />
+        </StateActionFields>
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="emailBlanket" ActionType="G" After="emailQuote" PlacementInCategory="0" MassProcessingScreen="SO502000" BatchMode="True" MenuFolderType="Printing and Emailing Category" WindowMode="S" DisablePersist="True" ExposedToMobile="False">
+        <StateActionFields>
+            <StateActionField IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" FieldName="Emailed" ActionName="emailBlanket" IsFromScheme="True" Value="True" StateActionFieldLineNbr="0" />
+        </StateActionFields>
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="createPurchaseOrder" ActionType="G" After="emailBlanket" PlacementInCategory="0" BatchMode="False" MenuFolderType="Replenishment Category" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="createTransferOrder" ActionType="G" After="createPurchaseOrder" PlacementInCategory="0" BatchMode="False" MenuFolderType="Replenishment Category" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="createVendorReturn" ActionType="G" After="createTransferOrder" PlacementInCategory="0" BatchMode="False" MenuFolderType="Replenishment Category" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="recalculateDiscountsAction" ActionType="G" After="createVendorReturn" PlacementInCategory="0" BatchMode="False" MenuFolderType="Other Category" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="recalcExternalTax" ActionType="G" After="recalculateDiscountsAction" PlacementInCategory="0" BatchMode="False" MenuFolderType="Other Category" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="validateAddresses" ActionType="G" After="recalcExternalTax" PlacementInCategory="0" BatchMode="False" MenuFolderType="Other Category" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="copyOrder" ActionType="G" After="validateAddresses" PlacementInCategory="0" BatchMode="False" MenuFolderType="Other Category" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="createAndAuthorizePayment" ActionType="G" After="copyOrder" PlacementInCategory="0" MassProcessingScreen="SO501000" BatchMode="False" WindowMode="S" HideCondition="True" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="createAndCapturePayment" ActionType="G" After="createAndAuthorizePayment" PlacementInCategory="0" MassProcessingScreen="SO501000" BatchMode="False" WindowMode="S" HideCondition="True" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="createChildOrders" ActionType="G" After="createAndCapturePayment" PlacementInCategory="0" MassProcessingScreen="SO501000" BatchMode="False" MenuFolderType="Processing Category" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="processExpiredOrder" ActionType="G" After="createChildOrders" PlacementInCategory="0" MassProcessingScreen="SO501000" BatchMode="False" MenuFolderType="Processing Category" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="copyOrderQT" ActionType="G" After="ShowCustomerDetails" PlacementInCategory="0" AfterInMenu="putOnHold" BatchMode="False" MenuFolderType="Processing Category" WindowMode="S" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="approve" ActionType="G" After="copyOrderQT" PlacementInCategory="0" BatchMode="False" MenuFolderType="Action" WindowMode="S" HideCondition="True" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="reject" ActionType="G" After="approve" PlacementInCategory="0" BatchMode="False" MenuFolderType="Action" WindowMode="S" HideCondition="True" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="CreateProdOrder" ActionType="G" After="reject" PlacementInCategory="0" BatchMode="False" MenuFolderType="Manufacturing Category" WindowMode="S" HideCondition="fd870edf-35db-91e2-dc01-107241dc02e7" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="CTPButton" ActionType="G" After="CreateProdOrder" PlacementInCategory="0" BatchMode="False" MenuFolderType="Manufacturing Category" WindowMode="S" HideCondition="fd870edf-35db-91e2-dc01-107241dc02e7" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="CreateServiceOrder" ActionType="G" After="CTPButton" PlacementInCategory="0" BatchMode="False" MenuFolderType="Services Category" WindowMode="S" HideCondition="7b4ef48d-fdf5-76e2-dce8-d2ca622db2fe" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="OpenAppointmentBoard" ActionType="G" After="CreateServiceOrder" PlacementInCategory="0" BatchMode="False" MenuFolderType="Services Category" WindowMode="S" HideCondition="7b4ef48d-fdf5-76e2-dce8-d2ca622db2fe" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Action IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" ActionName="ViewServiceOrder" ActionType="G" After="OpenAppointmentBoard" PlacementInCategory="0" BatchMode="False" MenuFolderType="Inquiry" WindowMode="S" HideCondition="7b4ef48d-fdf5-76e2-dce8-d2ca622db2fe" ExposedToMobile="False">
+        <StateActionFields />
+        <StateActionParams />
+    </Action>
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Actions" CategoryName="Action" Placement="0" LineNbr="0" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Reports" CategoryName="Report" Placement="0" After="Action" LineNbr="1" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Processing" CategoryName="Processing Category" Placement="0" After="Report" LineNbr="2" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Approval" CategoryName="Approval Category" Placement="0" After="Processing Category" LineNbr="3" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Printing and Emailing" CategoryName="Printing and Emailing Category" Placement="0" After="Approval Category" LineNbr="4" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Replenishment" CategoryName="Replenishment Category" Placement="0" After="Printing and Emailing Category" LineNbr="5" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Manufacturing" CategoryName="Manufacturing Category" Placement="0" After="Replenishment Category" LineNbr="6" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Services" CategoryName="Services Category" Placement="0" After="Replenishment Category" LineNbr="7" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Other" CategoryName="Other Category" Placement="0" After="Services Category" LineNbr="8" />
+    <Category IsActive="True" IsSystem="True" IsCustomized="False" IsCustomizedRecursive="False" DisplayName="Inquiries" CategoryName="Inquiry" Placement="0" After="Other Category" LineNbr="9" />
+</Actions>
