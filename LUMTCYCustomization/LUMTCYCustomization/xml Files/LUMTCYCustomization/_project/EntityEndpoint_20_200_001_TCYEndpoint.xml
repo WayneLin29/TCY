@@ -1,0 +1,153 @@
+﻿<EntityEndpoint>
+    <Endpoint xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="TCYEndpoint" version="20.200.001" systemContractVersion="4" xmlns="http://www.acumatica.com/entity/maintenance/5.31">
+        <ExtendsEndpoint name="Default" version="20.200.001" />
+        <TopLevelEntity name="SalesOrder" screen="SO301000">
+            <Fields>
+                <Field name="CuryPremiumFreightAmt" type="DecimalValue" />
+            </Fields>
+            <Mappings>
+                <Mapping field="CuryPremiumFreightAmt">
+                    <To object="CurrentDocument: 11" field="CuryPremiumFreightAmt" />
+                </Mapping>
+                <Mapping field="FinancialSettings">
+                    <Mapping field="OwnerID">
+                        <To object="CurrentDocument: 3" field="OwnerID" />
+                    </Mapping>
+                </Mapping>
+            </Mappings>
+        </TopLevelEntity>
+        <LinkedEntity name="FinancialSettings">
+            <Fields>
+                <Field name="OwnerID" type="IntValue" />
+            </Fields>
+        </LinkedEntity>
+        <TopLevelEntity name="UserToEmployee" screen="GI690012">
+            <Fields>
+                <Field name="email" type="StringValue" />
+                <Field name="UserName" type="StringValue" />
+                <Field name="UserToEmployeeDetails" type="UserToEmployeeDetail[]" />
+            </Fields>
+            <Mappings>
+                <Mapping field="UserToEmployeeDetails">
+                    <Mapping field="Login">
+                        <To object="Results" field="Users_username" />
+                    </Mapping>
+                    <Mapping field="Email">
+                        <To object="Results" field="Users_email" />
+                    </Mapping>
+                    <Mapping field="EmployeeID">
+                        <To object="Results" field="EPEmployee_acctCD" />
+                    </Mapping>
+                    <Mapping field="DefaultContact">
+                        <To object="Results" field="EPEmployee_defContactID" />
+                    </Mapping>
+                    <Mapping field="DisplayName">
+                        <To object="Results" field="Users_displayName" />
+                    </Mapping>
+                </Mapping>
+                <Mapping field="UserName">
+                    <To object="Filter" field="UserName" />
+                </Mapping>
+                <Mapping field="email">
+                    <To object="Filter" field="email" />
+                </Mapping>
+            </Mappings>
+        </TopLevelEntity>
+        <Detail name="UserToEmployeeDetail">
+            <Fields>
+                <Field name="DefaultContact" type="IntValue" />
+                <Field name="DisplayName" type="StringValue" />
+                <Field name="Email" type="StringValue" />
+                <Field name="EmployeeID" type="StringValue" />
+                <Field name="Login" type="StringValue" />
+            </Fields>
+        </Detail>
+        <TopLevelEntity name="PurchaseOrder" screen="PO301000">
+            <Fields>
+                <Field name="ShipToAddressOverride" type="BooleanValue" />
+            </Fields>
+            <Mappings>
+                <Mapping field="ShipToAddressOverride">
+                    <To object="Shipping_Address" field="OverrideAddress" />
+                </Mapping>
+            </Mappings>
+        </TopLevelEntity>
+        <Detail name="PurchaseOrderDetail" />
+        <TopLevelEntity name="CurrencyRate" screen="CM301000">
+            <Fields>
+                <Field name="Effective" type="EffectiveCurrencyRate" />
+                <Field name="EffectiveDate" type="DateTimeValue" />
+                <Field name="Entry" type="CurrencyRateEntry[]" />
+                <Field name="ToCurrency" type="StringValue" />
+            </Fields>
+            <Mappings>
+                <Mapping field="EffectiveDate">
+                    <To object="Filter" field="EffDate" />
+                </Mapping>
+                <Mapping field="ToCurrency">
+                    <To object="Filter" field="ToCurrency" />
+                </Mapping>
+                <Mapping field="Entry">
+                    <Mapping field="CurrencyEffectiveDate">
+                        <To object="CuryRateRecordsEntry" field="CuryEffDate" />
+                    </Mapping>
+                    <Mapping field="MultDiv">
+                        <To object="CuryRateRecordsEntry" field="CuryMultDiv" />
+                    </Mapping>
+                    <Mapping field="CurrencyRate">
+                        <To object="CuryRateRecordsEntry" field="CuryRate" />
+                    </Mapping>
+                    <Mapping field="CurrencyRateType">
+                        <To object="CuryRateRecordsEntry" field="CuryRateType" />
+                    </Mapping>
+                    <Mapping field="FromCurrency">
+                        <To object="CuryRateRecordsEntry" field="FromCuryID" />
+                    </Mapping>
+                    <Mapping field="RateReciprocal">
+                        <To object="CuryRateRecordsEntry" field="RateReciprocal" />
+                    </Mapping>
+                </Mapping>
+                <Mapping field="Effective">
+                    <Mapping field="CurrencyEffectiveDate">
+                        <To object="CuryRateRecordsEffDate" field="CuryEffDate" />
+                    </Mapping>
+                    <Mapping field="MultDiv">
+                        <To object="CuryRateRecordsEffDate" field="CuryMultDiv" />
+                    </Mapping>
+                    <Mapping field="CurrencyRate">
+                        <To object="CuryRateRecordsEffDate" field="CuryRate" />
+                    </Mapping>
+                    <Mapping field="CurrencyRateType">
+                        <To object="CuryRateRecordsEffDate" field="CuryRateType" />
+                    </Mapping>
+                    <Mapping field="FromCurrency">
+                        <To object="CuryRateRecordsEffDate" field="FromCuryID" />
+                    </Mapping>
+                    <Mapping field="RateReciprocal">
+                        <To object="CuryRateRecordsEffDate" field="RateReciprocal" />
+                    </Mapping>
+                </Mapping>
+            </Mappings>
+        </TopLevelEntity>
+        <Detail name="CurrencyRateEntry">
+            <Fields>
+                <Field name="CurrencyEffectiveDate" type="DateTimeValue" />
+                <Field name="CurrencyRate" type="DecimalValue" />
+                <Field name="CurrencyRateType" type="StringValue" />
+                <Field name="FromCurrency" type="StringValue" />
+                <Field name="MultDiv" type="StringValue" />
+                <Field name="RateReciprocal" type="DecimalValue" />
+            </Fields>
+        </Detail>
+        <LinkedEntity name="EffectiveCurrencyRate">
+            <Fields>
+                <Field name="CurrencyEffectiveDate" type="DateTimeValue" />
+                <Field name="CurrencyRate" type="DecimalValue" />
+                <Field name="CurrencyRateType" type="StringValue" />
+                <Field name="FromCurrency" type="StringValue" />
+                <Field name="MultDiv" type="StringValue" />
+                <Field name="RateReciprocal" type="DecimalValue" />
+            </Fields>
+        </LinkedEntity>
+    </Endpoint>
+</EntityEndpoint>
