@@ -1,0 +1,13 @@
+﻿<Page path="~/pages/so/so503000.aspx" pageSource="vVhLU+M4ED5DFf/B5S3mtEvCTM0FkqnNgwxUJSSLGeCWEraINVEsjyznMYf97dst2YljHCeEsBQHRWr1u1tfu3b6tzUgI2p1STCKYVG3W3/YVo9Eiko86DAOe/9WVjtRpSPkpE0VYfxsordtqxErcTWlgXpkksZh3VYyprb1QDjziKJ39FdMI1W3XwiPYL8lvISz0/9a/VKtVs9IFM7P3Mi2bgKfSqaiuo3ShimBfXJswd89U3jtR6Bw4Wnlbev028nxyXENjDF63i9Caj0wqWLCB0T5O1iALGqgxEVLBAoMsW7adduF9Tmqq7cGnLj0WnCPSjwM/bZjWzIOCBjmUDkFNt+MlrVwfjF4ahNFHBFLl2pmXrSkjgw1qBixZ7TnXrvrkXmo63m1empbaMMtmcDh4Oms//yTuio6c/rwfxNMBXOp47NwAmrZ1kCyCZGLB0ZndRv8qg1CS7uCeE3qkykTEviIMOYQDYdMqQehgZDYFTS7krF7kxs+b3ZDp9QL6GvUTHN6gR+vvLDyU+omRy3QK7//YoFH5xcWeCTnHbzTo5NnKlcWt0iomAhQDQ7egiXQ0RcSc4WqS8GRP/Ua5izRUmt6Tychuiazt7KgSxYiVncxp3nNHUUk8ObxJEhj2CXPlEeJrlHPeA1EO+w3WAS/K4Uy2lKEbTELgHwyYarlQz3SKGW6pneR+zqMcq9upxQbZICB92xCrzymyuRoq5C4TFSG6H3SrgJvm6wlyQ6SDNOkRLYxXiMrZt7yqTtuivlmE1x/7PhiBkUI5eGV+ixLVizu/8g1h46wb0BDHJcFphVHSkywyMtsylJtEofVKGSpLCIlg+7M4xErzfA1wvfJxP75wEh5wBKSdznSYYqWOzGl2L83DIg7JuCSET4bZaJyhIfOQieXhM7GLNypsHS1PDLlt+kUCvU6fi61rYC6wdko6NIXlWKSd2gDjwkLqKlg2SMBoAu+KFNow4UdddoliRPe5emVIUJJR0dHRsA9naui9qwyAm5jfGT7Ly0RMvoawWSk5CmzRtUquRe2VlkDB7uikC+bUcj3UhTyXTJPcxnBYgcEck3ZyAeK86/VcF4ISC4tDhG8sOD80lIiNKscTGlwDi1f11vq1ob3E1omojNTIQidbWvlKmeMjU0HDUHdTfArBkydsHIoka6fsmoS5fo/QkTY6dYKAyXoENHUInAHImLmwGRPB2CvwU06etHqwu2z/HPV1DPLYbPhuiIO1N2QuK5CbLo87UuIA9y0rTsaEsg20yLSXMpmQpdOoV0UJjwGSR+vwTvNO7JzN/StOzHbgNwO1c/yj+pTQT/b0ElSbKCreAswWNKU8152hNULloRs2yu2JLsKCEwcsNsxo5hOK2wCqfnbNFg9efvChLwK+0rsCpdgTu8mOUv9Ng0K8CW6dCtCXtK81eC1ILdiaAJbLDQUbxNj2nXOJvT0P+r1m6az5DbmfMm8IL/0xddK1CrlZVpLekWpttgaDN0WXZaVhI+bfmjBQTTQAyJCHviVFGhilf7ZQG4m/02fFVKtl0hPTOmOns3rmnbozZ7TldllwRgfYhLAyRQexbZwYzPgH0yeIiqOsEnDM6ZjLyT6abfaf5tdxUPVvhyz/aPNIsilBWIHzNHG8u8jxBW8eocXk+1NOes+jdTlh5m3kjtMl0OPRq48vKgVQtiZc4ZLk3HuALKQIAURdL6SC4r9YLmczGab43LQ0Bhxw5tbXBw6GI9CjkdSxGHRsLkv0/4sKB7/yxmudfAd+6R+YTKxvkOQfti2pcf9gliT9b+DCx0mXzZMyFlY/CHv8C59pMaH7/XqPrIf8D79yIgaLL/85rZn26hViiFKMsQux5a1gffVnFPDSQ+nCD1RwJCEw80jDJRiloFN5iHusSCdQD/jt++1Wdp85W0SmX7dNhs50JBeyShZMGX/Bw==">
+    <PXGridLevel DataMember="Orders" ParentId="phG_grid_Levels#0" TypeFullName="PX.Web.UI.PXGridLevel">
+        <Children Key="Columns">
+            <AddItem>
+                <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
+                    <Prop Key="DataField" Value="ShipmentDesc" />
+                    <Prop Key="Width" Value="280" />
+                </PXGridColumn>
+            </AddItem>
+            <PXGridColumn DataField="ShipmentQty" OriginalIndex="14" />
+        </Children>
+    </PXGridLevel>
+</Page>

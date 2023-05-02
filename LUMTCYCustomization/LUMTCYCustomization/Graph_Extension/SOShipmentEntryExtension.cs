@@ -19,7 +19,10 @@ namespace PX.Objects.SO
             bool newlyCreated, SetShipmentFieldsFromOrderDelegate baseMethod)
         {
             if (newlyCreated)
+            { 
                 shipment.OwnerID = order.OwnerID;
+                shipment.ShipmentDesc = order?.OrderDesc;
+            }
             return baseMethod(order, shipment, siteID, shipDate, operation, orderOperation, newlyCreated);
         }
     }

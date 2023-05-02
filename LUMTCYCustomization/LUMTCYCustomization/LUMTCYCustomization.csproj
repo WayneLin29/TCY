@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Examples.cs" />
+    <Compile Include="Graph_Extension\AccountHistoryEnqExtension.cs" />
     <Compile Include="Graph_Extension\JournalEntryExtension.cs" />
     <Compile Include="Graph_Extension\SOCreatShipmentExtension.cs" />
     <Compile Include="Graph_Extension\SOShipmentEntryExtension.cs" />
